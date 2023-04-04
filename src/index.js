@@ -443,6 +443,10 @@ export default class TronWeb extends EventEmitter {
         return account
     }
 
+    static fromPublicKey(publicKey) {
+        return utils.accounts.generateAddressFromPublicKey(publicKey);
+    }
+
     async isConnected(callback = false) {
         if (!callback)
             return this.injectPromise(this.isConnected);

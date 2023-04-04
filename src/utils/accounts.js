@@ -51,6 +51,10 @@ export function generateRandom(options) {
     return result;
 }
 
+export function generateAddressFromPublicKey(publicKey){
+    return computeAddress(publicKey)
+}
+
 export function generateAccountWithMnemonic(mnemonic, path, wordlist = 'en') {
     if(!path) {
         path = TRON_BIP39_PATH_INDEX_0;
