@@ -4,7 +4,7 @@ import {
     genPriKey,
     getAddressFromPriKey,
     getPubKeyFromPriKey,
-    pkToAddress,computeAddress
+    pkToAddress, computeAddressFromPubKey
 } from './crypto';
 import {ethersWallet} from './ethersUtils'
 import {TRON_BIP39_PATH_INDEX_0} from './address'
@@ -52,7 +52,7 @@ export function generateRandom(options) {
 }
 
 export function generateAddressFromPublicKey(publicKey){
-    return computeAddress(publicKey)
+    return computeAddressFromPubKey(publicKey)
 }
 
 export function generateAccountWithMnemonic(mnemonic, path, wordlist = 'en') {

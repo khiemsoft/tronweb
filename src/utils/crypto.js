@@ -211,6 +211,30 @@ export function getAddressFromPriKeyBase64String(priKeyBase64String) {
     return addressBase64;
 }
 
+export function computeAddressFromPubKey(pubBytes){
+    const ec = new EC('secp256k1');
+    const key = ec.keyFromPublic(pubBytes, 'bytes');
+    const pubkey = key.getPublic();
+    const x = pubkey.x;
+    const y = pubkey.y;
+
+    let xHex = x.toString('hex');
+
+    while (xHex.length < 64) {
+        xHex = `0${xHex}`;
+    }
+
+    let yHex = y.toString('hex');
+
+    while (yHex.length < 64) {
+        yHex = `0${yHex}`;
+    }
+
+    const pubkeyHex = `04${xHex}${yHex}`;
+    const pubkeyBytes = hexStr2byteArray(pubkeyHex);
+    return getBase58CheckAddress(computeAddress(pubkeyBytes));
+}
+
 export function getPubKeyFromPriKey(priKeyBytes) {
     const ec = new EC('secp256k1');
     const key = ec.keyFromPrivate(priKeyBytes, 'bytes');
