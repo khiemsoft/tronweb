@@ -4,7 +4,7 @@ import {
     genPriKey,
     getAddressFromPriKey,
     getPubKeyFromPriKey,
-    pkToAddress,
+    pkToAddress,computeAddress
 } from './crypto';
 import {ethersWallet} from './ethersUtils'
 import {TRON_BIP39_PATH_INDEX_0} from './address'
